@@ -1,0 +1,18 @@
+# @date 2020-04-30
+# @author LiYun
+config:
+    verify: False
+    name: "login testcase"
+#    variables:
+    base_url: https://reqres.in
+
+teststeps:
+-
+    name: login step
+    api: api/login_api.yml
+    extract:
+        token: $.token
+    validate:
+        - eq: ["status_code", 200]
+    teardown_hooks:
+        - ${teardown_demo($response)}

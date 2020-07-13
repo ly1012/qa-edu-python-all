@@ -1,0 +1,15 @@
+name: login reqres api
+variables:
+    commit: "登录"
+request:
+    headers:
+        content-type: application/json
+    json:
+        email: eve.holt@reqres.in
+        password: cityslicka
+    method: POST
+    url: /api/login
+validate:
+    - eq: [status_code, 200]
+teardown_hooks:
+  - ${teardown_demo($response)}
